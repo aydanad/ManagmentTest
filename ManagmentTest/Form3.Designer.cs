@@ -59,7 +59,7 @@
             this.Open.Name = "Open";
             this.Open.Size = new System.Drawing.Size(93, 28);
             this.Open.TabIndex = 35;
-            this.Open.Text = "Open";
+            this.Open.Text = " open";
             this.Open.UseVisualStyleBackColor = true;
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 

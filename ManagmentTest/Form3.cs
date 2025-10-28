@@ -24,15 +24,17 @@ namespace ManagmentTest
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            var item= db.Canddidates.Where(v => v.CanddidateID == _candidateId).SingleOrDefault();
-            txtFirstName.Text=item.FirstName;
-            txtLastName.Text=item.LastName;
-            txtPhone.Text=item.Phone;
-            txtEmail.Text = item.Email;
             var jobs = db.JobPositions.Where(h => h.IsActive == true).ToList();
             Jobs.DataSource = jobs;
             Jobs.DisplayMember = "Title";
             Jobs.ValueMember = "JobPositionID";
+            var item= db.Canddidates.Where(v => v.CanddidateID == _candidateId).SingleOrDefault();
+            var applay = item.Applies.Where(c => c.CanddidateID == item.CanddidateID).SingleOrDefault();
+            txtFirstName.Text=item.FirstName;
+            txtLastName.Text=item.LastName;
+            txtPhone.Text=item.Phone;
+            txtEmail.Text = item.Email;
+            Jobs.Text = applay.JobPosition.Title;
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -54,12 +56,15 @@ namespace ManagmentTest
 
         private void OK_Click(object sender, EventArgs e)
         {
+            var apply=db.Applies.Where(c=>c.CanddidateID==_candidateId).SingleOrDefault();
             var canddidate = db.Canddidates.Find(_candidateId);
             canddidate.FirstName = txtFirstName.Text;
             canddidate.LastName = txtLastName.Text;
             canddidate.Phone = txtPhone.Text;
             canddidate.Email = txtEmail.Text;
             canddidate.ResumePath = filepath;
+            apply.JobPosition.Title = Jobs.Text;
+            
 
             db.SaveChanges();
             this.Close();
