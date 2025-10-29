@@ -37,15 +37,15 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Add = new System.Windows.Forms.Button();
+            this.Refresh = new System.Windows.Forms.Button();
+            this.print = new System.Windows.Forms.Button();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CanddidateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CandidateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResumePath = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Add = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
-            this.print = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -110,7 +110,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FirstName,
-            this.CanddidateID,
+            this.CandidateID,
             this.LastName,
             this.Email,
             this.Phone,
@@ -123,49 +123,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(571, 269);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "نام";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            // 
-            // CanddidateID
-            // 
-            this.CanddidateID.DataPropertyName = "CanddidateID";
-            this.CanddidateID.HeaderText = "ایدی";
-            this.CanddidateID.Name = "CanddidateID";
-            this.CanddidateID.ReadOnly = true;
-            this.CanddidateID.Visible = false;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "نام خانوادگی";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "ایمیل";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "تلفن";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            // 
-            // ResumePath
-            // 
-            this.ResumePath.DataPropertyName = "ResumePath";
-            this.ResumePath.HeaderText = "فایل رزومه";
-            this.ResumePath.Name = "ResumePath";
-            this.ResumePath.ReadOnly = true;
             // 
             // Add
             // 
@@ -200,6 +157,49 @@
             this.print.UseVisualStyleBackColor = true;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "نام";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // CandidateID
+            // 
+            this.CandidateID.DataPropertyName = "CandidateID";
+            this.CandidateID.HeaderText = "ایدی";
+            this.CandidateID.Name = "CandidateID";
+            this.CandidateID.ReadOnly = true;
+            this.CandidateID.Visible = false;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "نام خانوادگی";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "ایمیل";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "تلفن";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            // 
+            // ResumePath
+            // 
+            this.ResumePath.DataPropertyName = "ResumePath";
+            this.ResumePath.HeaderText = "فایل رزومه";
+            this.ResumePath.Name = "ResumePath";
+            this.ResumePath.ReadOnly = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,12 +231,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.Button print;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CanddidateID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CandidateID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
         private System.Windows.Forms.DataGridViewButtonColumn ResumePath;
-        private System.Windows.Forms.Button print;
     }
 }

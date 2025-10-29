@@ -11,7 +11,7 @@ namespace ManagmentTest
 {
     public partial class Form2 : Form
     {
-        Test_DBEntities1 db = new Test_DBEntities1();
+        ManagementTestEntities1 db = new ManagementTestEntities1();
         public int id;
         public Form2()
         {
@@ -29,10 +29,10 @@ namespace ManagmentTest
             {
                 var item = dataGridView1.SelectedRows[0];
                 int userId = Convert.ToInt32(item.Cells["CanddidateID"].Value);
-               var i= db.Canddidates.Find(userId);
-                var c=db.Applies.Where(h=>h.CanddidateID==userId).FirstOrDefault();
+               var i= db.Candidates.Find(userId);
+                var c=db.Applies.Where(h=>h.CandidateID==userId).FirstOrDefault();
                 db.Applies.Remove(c);
-                db.Canddidates.Remove(i);
+                db.Candidates.Remove(i);
                 db.SaveChanges();
                 RefreshGrid();
             }
@@ -40,7 +40,7 @@ namespace ManagmentTest
 
         public void RefreshGrid()
         {
-            var list = db.Canddidates.ToList();
+            var list = db.Candidates.ToList();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = list;
         }
@@ -48,7 +48,7 @@ namespace ManagmentTest
         private void ویرایشToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var item = dataGridView1.SelectedRows[0];
-            id = Convert.ToInt32(item.Cells["CanddidateID"].Value);
+            id = Convert.ToInt32(item.Cells["CandidateID"].Value);
             Form3 form = new Form3(id);
             form.ShowDialog();
         }

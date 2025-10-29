@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4e635ddc52bc4e7cb57c3a94911e8b5e" Name="Diagram1">
-        <EntityTypeShape EntityType="Test_DBModel.Apply" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Test_DBModel.Canddidate" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Test_DBModel.Interview" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Test_DBModel.JobPosition" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Test_DBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="Test_DBModel.FK_Application_Canddidate" ManuallyRouted="false" />
-        <AssociationConnector Association="Test_DBModel.FK_Application_JobPosition" ManuallyRouted="false" />
-        <AssociationConnector Association="Test_DBModel.FK_Interview_Application" ManuallyRouted="false" />
+      <Diagram DiagramId="fcb93c52dbcd4bceb9ac4e027288a794" Name="Diagram1">
+        <EntityTypeShape EntityType="ManagementTestModel.Apply" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementTestModel.Candidate" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementTestModel.Interview" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementTestModel.JobPosition" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagementTestModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ManagementTestModel.FK_Application_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagementTestModel.FK_Application_JobPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagementTestModel.FK_Interview_Application" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

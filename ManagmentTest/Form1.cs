@@ -13,7 +13,7 @@ namespace ManagmentTest
 {
     public partial class Form1 : Form
     {
-        Test_DBEntities1 db = new Test_DBEntities1();
+        ManagementTestEntities1 db = new ManagementTestEntities1();
         Form2 frm =new Form2();
         string filepath;
         public Form1()
@@ -31,7 +31,7 @@ namespace ManagmentTest
 
         private void OK_Click(object sender, EventArgs e)
         {
-            Canddidate canddidate = new Canddidate()
+            Candidate canddidate = new Candidate()
             {
                 FirstName = txtFirstName.Text,
                 LastName = txtLastName.Text,
@@ -41,12 +41,12 @@ namespace ManagmentTest
             };
             Apply  apply = new Apply()
             {
-                CanddidateID = canddidate.CanddidateID,
-                PositionID = (int)Jobs.SelectedValue,
+                CandidateID = canddidate.CandidateID,
+                JobPositionID = (int)Jobs.SelectedValue,
                 ApplicationDate = DateTime.Now,
                 Status = "در انتظار"
             };
-            db.Canddidates.Add(canddidate);
+            db.Candidates.Add(canddidate);
             db.Applies.Add(apply);
             db.SaveChanges();
             frm.RefreshGrid();

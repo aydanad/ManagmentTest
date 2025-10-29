@@ -21,12 +21,12 @@ namespace ManagmentTest
         }
     
         public int ApplicationID { get; set; }
-        public int CanddidateID { get; set; }
-        public int PositionID { get; set; }
+        public int CandidateID { get; set; }
+        public int JobPositionID { get; set; }
         public System.DateTime ApplicationDate { get; set; }
         public string Status { get; set; }
     
-        public virtual Canddidate Canddidate { get; set; }
+        public virtual Candidate Candidate { get; set; }
         public virtual JobPosition JobPosition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Interview> Interviews { get; set; }

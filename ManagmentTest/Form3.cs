@@ -14,7 +14,7 @@ namespace ManagmentTest
     {
         Form2 frm = new Form2();
         private int _candidateId;
-        Test_DBEntities1 db = new Test_DBEntities1();
+        ManagementTestEntities1 db = new ManagementTestEntities1();
         string filepath;
         public Form3(int id)
         {
@@ -28,8 +28,8 @@ namespace ManagmentTest
             Jobs.DataSource = jobs;
             Jobs.DisplayMember = "Title";
             Jobs.ValueMember = "JobPositionID";
-            var item= db.Canddidates.Where(v => v.CanddidateID == _candidateId).SingleOrDefault();
-            var applay = item.Applies.Where(c => c.CanddidateID == item.CanddidateID).SingleOrDefault();
+            var item= db.Candidates.Where(v => v.CandidateID == _candidateId).SingleOrDefault();
+            var applay = item.Applies.Where(c => c.CandidateID == item.CandidateID).SingleOrDefault();
             txtFirstName.Text=item.FirstName;
             txtLastName.Text=item.LastName;
             txtPhone.Text=item.Phone;
@@ -56,14 +56,14 @@ namespace ManagmentTest
 
         private void OK_Click(object sender, EventArgs e)
         {
-            var apply=db.Applies.Where(c=>c.CanddidateID==_candidateId).SingleOrDefault();
-            var canddidate = db.Canddidates.Find(_candidateId);
+            var apply=db.Applies.Where(c=>c.CandidateID==_candidateId).SingleOrDefault();
+            var canddidate = db.Candidates.Find(_candidateId);
             canddidate.FirstName = txtFirstName.Text;
             canddidate.LastName = txtLastName.Text;
             canddidate.Phone = txtPhone.Text;
             canddidate.Email = txtEmail.Text;
             canddidate.ResumePath = filepath;
-            apply.JobPosition.Title = Jobs.Text;
+            apply.JobPositionID = (int)Jobs.SelectedValue;
             
 
             db.SaveChanges();

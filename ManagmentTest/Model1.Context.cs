@@ -13,10 +13,10 @@ namespace ManagmentTest
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Test_DBEntities1 : DbContext
+    public partial class ManagementTestEntities1 : DbContext
     {
-        public Test_DBEntities1()
-            : base("name=Test_DBEntities1")
+        public ManagementTestEntities1()
+            : base("name=ManagementTestEntities1")
         {
         }
     
@@ -26,7 +26,7 @@ namespace ManagmentTest
         }
     
         public virtual DbSet<Apply> Applies { get; set; }
-        public virtual DbSet<Canddidate> Canddidates { get; set; }
+        public virtual DbSet<Candidate> Candidates { get; set; }
         public virtual DbSet<Interview> Interviews { get; set; }
         public virtual DbSet<JobPosition> JobPositions { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
