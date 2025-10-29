@@ -37,15 +37,14 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Add = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
-            this.print = new System.Windows.Forms.Button();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CandidateID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResumePath = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Add = new System.Windows.Forms.Button();
+            this.print = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -122,40 +121,9 @@
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataGridView1.Size = new System.Drawing.Size(571, 269);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            // 
-            // Add
-            // 
-            this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add.Location = new System.Drawing.Point(457, 31);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(102, 28);
-            this.Add.TabIndex = 36;
-            this.Add.Text = "ثبت درخواست";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // Refresh
-            // 
-            this.Refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Refresh.Location = new System.Drawing.Point(336, 31);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(102, 28);
-            this.Refresh.TabIndex = 37;
-            this.Refresh.Text = "رفرش";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
-            // 
-            // print
-            // 
-            this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.print.Location = new System.Drawing.Point(219, 31);
-            this.print.Name = "print";
-            this.print.Size = new System.Drawing.Size(102, 28);
-            this.print.TabIndex = 38;
-            this.print.Text = "پرینت گزارش";
-            this.print.UseVisualStyleBackColor = true;
-            this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // FirstName
             // 
@@ -199,6 +167,29 @@
             this.ResumePath.HeaderText = "فایل رزومه";
             this.ResumePath.Name = "ResumePath";
             this.ResumePath.ReadOnly = true;
+            this.ResumePath.Text = "باز کردن";
+            // 
+            // Add
+            // 
+            this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add.Location = new System.Drawing.Point(457, 31);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(102, 28);
+            this.Add.TabIndex = 36;
+            this.Add.Text = "ثبت درخواست";
+            this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
+            // print
+            // 
+            this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.print.Location = new System.Drawing.Point(349, 31);
+            this.print.Name = "print";
+            this.print.Size = new System.Drawing.Size(102, 28);
+            this.print.TabIndex = 38;
+            this.print.Text = "پرینت گزارش";
+            this.print.UseVisualStyleBackColor = true;
+            this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // Form2
             // 
@@ -206,7 +197,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 445);
             this.Controls.Add(this.print);
-            this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
@@ -230,7 +220,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Add;
-        private System.Windows.Forms.Button Refresh;
         private System.Windows.Forms.Button print;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CandidateID;

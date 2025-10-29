@@ -4,6 +4,8 @@ using Stimulsoft.Report.Dictionary;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,8 +13,9 @@ namespace ManagmentTest
 {
     public partial class Form2 : Form
     {
-        ManagementTestEntities1 db = new ManagementTestEntities1();
+        ManagementTestEntities db = new ManagementTestEntities();
         public int id;
+        string path;
         public Form2()
         {
             InitializeComponent();
@@ -25,12 +28,12 @@ namespace ManagmentTest
 
         private void حذفToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count>0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
                 var item = dataGridView1.SelectedRows[0];
                 int userId = Convert.ToInt32(item.Cells["CanddidateID"].Value);
-               var i= db.Candidates.Find(userId);
-                var c=db.Applies.Where(h=>h.CandidateID==userId).FirstOrDefault();
+                var i = db.Candidates.Find(userId);
+                var c = db.Applies.Where(h => h.CandidateID == userId).FirstOrDefault();
                 db.Applies.Remove(c);
                 db.Candidates.Remove(i);
                 db.SaveChanges();
@@ -40,6 +43,7 @@ namespace ManagmentTest
 
         public void RefreshGrid()
         {
+            db = new ManagementTestEntities();
             var list = db.Candidates.ToList();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = list;
@@ -51,18 +55,15 @@ namespace ManagmentTest
             id = Convert.ToInt32(item.Cells["CandidateID"].Value);
             Form3 form = new Form3(id);
             form.ShowDialog();
-        }
-
-
-        private void Refresh_Click(object sender, EventArgs e)
-        {
             RefreshGrid();
         }
+
 
         private void Add_Click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
             form.ShowDialog();
+            RefreshGrid();
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -85,7 +86,7 @@ namespace ManagmentTest
                 using (var conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                   
+
                 }
 
                 StiReport report = new StiReport();
@@ -103,6 +104,40 @@ namespace ManagmentTest
             catch (Exception ex)
             {
                 MessageBox.Show("❌ خطا: " + ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // اطمینان از اینکه روی header کلیک نشده
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "ResumePath")
+                {
+                    path = dataGridView1.Rows[e.RowIndex].Cells["ResumePath"].Value?.ToString();
+                    Process p = new Process();
+                    ProcessStartInfo s = new ProcessStartInfo();
+                    s.FileName = path;
+                    s.UseShellExecute = true;
+                    p.StartInfo = s;
+                    p.Start();
+
+                }
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "ResumePath" && e.RowIndex >= 0)
+            {
+                string actualPath = e.Value?.ToString();
+                if (!string.IsNullOrEmpty(actualPath))
+                {
+                    e.Value = "باز کردن ";
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

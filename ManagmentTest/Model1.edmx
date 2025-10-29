@@ -13,18 +13,18 @@
           <Property Name="CandidateID" Type="int" Nullable="false" />
           <Property Name="JobPositionID" Type="int" Nullable="false" />
           <Property Name="ApplicationDate" Type="datetime" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Candidate">
           <Key>
             <PropertyRef Name="CandidateID" />
           </Key>
           <Property Name="CandidateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" MaxLength="150" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="ResumePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResumePath" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Interview">
           <Key>
@@ -33,17 +33,17 @@
           <Property Name="InterviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApplicationID" Type="int" Nullable="false" />
           <Property Name="InterviewDate" Type="datetime" Nullable="false" />
-          <Property Name="InterviewName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="InterviewName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="JobPosition">
           <Key>
             <PropertyRef Name="JobPositionID" />
           </Key>
           <Property Name="JobPositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" />
-          <Property Name="Department" Type="nvarchar" MaxLength="100" />
-          <Property Name="IsActive" Type="bit" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -123,7 +123,7 @@
           <Property Name="CandidateID" Type="Int32" Nullable="false" />
           <Property Name="JobPositionID" Type="Int32" Nullable="false" />
           <Property Name="ApplicationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Candidate" Relationship="Self.FK_Application_Candidate" FromRole="Apply" ToRole="Candidate" />
           <NavigationProperty Name="JobPosition" Relationship="Self.FK_Application_JobPosition" FromRole="Apply" ToRole="JobPosition" />
           <NavigationProperty Name="Interviews" Relationship="Self.FK_Interview_Application" FromRole="Apply" ToRole="Interview" />
@@ -133,11 +133,11 @@
             <PropertyRef Name="CandidateID" />
           </Key>
           <Property Name="CandidateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ResumePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResumePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Applies" Relationship="Self.FK_Application_Candidate" FromRole="Candidate" ToRole="Apply" />
         </EntityType>
         <EntityType Name="Interview">
@@ -147,8 +147,8 @@
           <Property Name="InterviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ApplicationID" Type="Int32" Nullable="false" />
           <Property Name="InterviewDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="InterviewName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InterviewName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Apply" Relationship="Self.FK_Interview_Application" FromRole="Interview" ToRole="Apply" />
         </EntityType>
         <EntityType Name="JobPosition">
@@ -156,9 +156,9 @@
             <PropertyRef Name="JobPositionID" />
           </Key>
           <Property Name="JobPositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Applies" Relationship="Self.FK_Application_JobPosition" FromRole="JobPosition" ToRole="Apply" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -207,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ManagementTestEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ManagementTestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Applies" EntityType="Self.Apply" />
           <EntitySet Name="Candidates" EntityType="Self.Candidate" />
           <EntitySet Name="Interviews" EntityType="Self.Interview" />
@@ -231,7 +231,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ManagementTestModelStoreContainer" CdmEntityContainer="ManagementTestEntities1">
+        <EntityContainerMapping StorageEntityContainer="ManagementTestModelStoreContainer" CdmEntityContainer="ManagementTestEntities">
           <EntitySetMapping Name="Applies">
             <EntityTypeMapping TypeName="ManagementTestModel.Apply">
               <MappingFragment StoreEntitySet="Apply">

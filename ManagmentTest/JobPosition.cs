@@ -23,7 +23,7 @@ namespace ManagmentTest
         public int JobPositionID { get; set; }
         public string Title { get; set; }
         public string Department { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Apply> Applies { get; set; }

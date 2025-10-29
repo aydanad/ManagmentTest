@@ -13,8 +13,7 @@ namespace ManagmentTest
 {
     public partial class Form1 : Form
     {
-        ManagementTestEntities1 db = new ManagementTestEntities1();
-        Form2 frm =new Form2();
+        ManagementTestEntities db = new ManagementTestEntities();
         string filepath;
         public Form1()
         {
@@ -49,7 +48,6 @@ namespace ManagmentTest
             db.Candidates.Add(canddidate);
             db.Applies.Add(apply);
             db.SaveChanges();
-            frm.RefreshGrid();
             this.Close();
             
         }

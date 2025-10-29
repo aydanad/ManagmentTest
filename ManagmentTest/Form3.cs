@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ManagmentTest
 {
     public partial class Form3 : Form
     {
-        Form2 frm = new Form2();
         private int _candidateId;
-        ManagementTestEntities1 db = new ManagementTestEntities1();
+        ManagementTestEntities db = new ManagementTestEntities();
         string filepath;
         public Form3(int id)
         {
@@ -62,10 +56,11 @@ namespace ManagmentTest
             canddidate.LastName = txtLastName.Text;
             canddidate.Phone = txtPhone.Text;
             canddidate.Email = txtEmail.Text;
-            canddidate.ResumePath = filepath;
+            if (!string.IsNullOrWhiteSpace(filepath))
+            {
+                canddidate.ResumePath = filepath;
+            }
             apply.JobPositionID = (int)Jobs.SelectedValue;
-            
-
             db.SaveChanges();
             this.Close();
         }

@@ -13,10 +13,10 @@ namespace ManagmentTest
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ManagementTestEntities1 : DbContext
+    public partial class ManagementTestEntities : DbContext
     {
-        public ManagementTestEntities1()
-            : base("name=ManagementTestEntities1")
+        public ManagementTestEntities()
+            : base("name=ManagementTestEntities")
         {
         }
     
