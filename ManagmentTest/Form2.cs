@@ -192,5 +192,57 @@ namespace ManagmentTest
             form.ShowDialog();
             RefreshGrid();
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView4.SelectedRows.Count > 0)
+            {
+                var item = dataGridView4.SelectedRows[0];
+                int userId = Convert.ToInt32(item.Cells["JobPositionID"].Value);
+                var i = db.JobPositions.Find(userId);
+                var k = db.Applies.Where(m => m.JobPositionID == userId).ToList();
+                var p = db.Interviews.Where(m => m.ApplicationID == k.ApplicationID).FirstOrDefault();
+                var l = db.Candidates.Where(m => m.CandidateID == k.CandidateID).FirstOrDefault();
+                
+                
+                if (k != null)
+                {
+                    foreach(var b in k)
+                    {
+                        db.Applies.Remove(b);
+                    }
+                }
+                if (p!=null)
+                {
+                    db.Interviews.Remove(p);
+                }
+                if (l != null)
+                {
+                    db.Candidates.Remove(l);
+                }
+                db.JobPositions.Remove(i);
+                db.SaveChanges();
+                RefreshGrid();
+            }
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            var item = dataGridView4.SelectedRows[0];
+            id = Convert.ToInt32(item.Cells["JobPositionID"].Value);
+            Form7 form = new Form7(id);
+            form.ShowDialog();
+            RefreshGrid();
+        }
+
+        private void dataGridView4_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dataGridView4.ClearSelection();
+                dataGridView4.Rows[e.RowIndex].Selected = true;
+                contextMenuStrip3.Show(Cursor.Position);
+            }
+        }
     }
 }
