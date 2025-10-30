@@ -198,31 +198,46 @@ namespace ManagmentTest
             if (dataGridView4.SelectedRows.Count > 0)
             {
                 var item = dataGridView4.SelectedRows[0];
-                int userId = Convert.ToInt32(item.Cells["JobPositionID"].Value);
-                var i = db.JobPositions.Find(userId);
-                var k = db.Applies.Where(m => m.JobPositionID == userId).ToList();
-                var p = db.Interviews.Where(m => m.ApplicationID == k.ApplicationID).FirstOrDefault();
-                var l = db.Candidates.Where(m => m.CandidateID == k.CandidateID).FirstOrDefault();
-                
-                
-                if (k != null)
+                int jobPositionId = Convert.ToInt32(item.Cells["JobPositionID"].Value);
+
+                var job = db.JobPositions.Find(jobPositionId);
+                if (job == null)
                 {
-                    foreach(var b in k)
-                    {
-                        db.Applies.Remove(b);
-                    }
+                    MessageBox.Show("موقعیت شغلی پیدا نشد!");
+                    return;
                 }
-                if (p!=null)
-                {
-                    db.Interviews.Remove(p);
-                }
-                if (l != null)
-                {
-                    db.Candidates.Remove(l);
-                }
-                db.JobPositions.Remove(i);
+
+               
+                var applies = db.Applies.Where(a => a.JobPositionID == jobPositionId).ToList();
+
+                var interviewIds = applies.Select(a => a.ApplicationID).ToList();
+                var candidateIds = applies.Select(a => a.CandidateID).ToList();
+
+                var interviews = db.Interviews
+                    .Where(i => interviewIds.Contains(i.ApplicationID))
+                    .ToList();
+
+                var candidates = db.Candidates
+                    .Where(c => candidateIds.Contains(c.CandidateID))
+                    .ToList();
+
+               
+                if (interviews.Any())
+                    db.Interviews.RemoveRange(interviews);
+
+                if (applies.Any())
+                    db.Applies.RemoveRange(applies);
+
+              
+                if (candidates.Any())
+                    db.Candidates.RemoveRange(candidates);
+
+                db.JobPositions.Remove(job);
                 db.SaveChanges();
+
                 RefreshGrid();
+                MessageBox.Show("با موفقیت حذف شد!");
+
             }
         }
 
