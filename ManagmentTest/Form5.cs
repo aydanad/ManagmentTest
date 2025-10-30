@@ -21,16 +21,16 @@ namespace ManagmentTest
         private void Form5_Load(object sender, EventArgs e)
         {
             var applies = db.Applies
-     .Where(a => a.Status == "در انتظار")
-     .Select(a => new
-     {
-         a.CandidateID,
-         FullName = db.Candidates
+                .Where(a => a.Status == "در انتظار")
+                .Select(a => new
+                {
+                    a.CandidateID,
+                    FullName = db.Candidates
                       .Where(c => c.CandidateID == a.CandidateID)
                       .Select(c => c.FirstName + " " + c.LastName)
                       .FirstOrDefault()
-     })
-     .ToList();
+                })
+                .ToList();
 
             txtApply.DataSource = applies;
             txtApply.DisplayMember = "FullName";

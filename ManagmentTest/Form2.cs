@@ -47,6 +47,12 @@ namespace ManagmentTest
             var list = db.Candidates.ToList();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = list;
+            var list2 = db.JobPositions.ToList();
+            dataGridView4.AutoGenerateColumns = false;
+            dataGridView4.DataSource = list2;
+            var list3 = db.Interviews.ToList();
+            dataGridView3.AutoGenerateColumns = false;
+            dataGridView3.DataSource = list3;
         }
 
         private void ویرایشToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,12 +151,46 @@ namespace ManagmentTest
         {
             Form4 frm = new Form4();
             frm.ShowDialog();
+            RefreshGrid();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Form5 frm = new Form5();
             frm.ShowDialog();
+            RefreshGrid();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count > 0)
+            {
+                var item = dataGridView3.SelectedRows[0];
+                int userId = Convert.ToInt32(item.Cells["InterviewID"].Value);
+                var i = db.Interviews.Find(userId);
+                db.Interviews.Remove(i);
+                db.SaveChanges();
+                RefreshGrid();
+            }
+        }
+
+        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dataGridView3.ClearSelection();
+                dataGridView3.Rows[e.RowIndex].Selected = true;
+                contextMenuStrip2.Show(Cursor.Position);
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            var item = dataGridView3.SelectedRows[0];
+            id = Convert.ToInt32(item.Cells["InterviewID"].Value);
+            Form6 form = new Form6(id);
+            form.ShowDialog();
+            RefreshGrid();
         }
     }
 }
