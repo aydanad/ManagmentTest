@@ -44,8 +44,6 @@ namespace ManagmentTest
             var item = db.Interviews.Where(v => v.InterviewID == _interviewId).SingleOrDefault();
             txtInterviewName.Text = item.InterviewName;
             txtInterviewDate.Value = item.InterviewDate;
-            txtApply.Text = item.Apply.Candidate.FirstName + " " + item.Apply.Candidate.LastName;
-            item.Apply.Status = "در انتظار";
             var applies = db.Applies
                .Where(a => a.Status == "در انتظار")
                .Select(a => new
@@ -59,7 +57,9 @@ namespace ManagmentTest
                .ToList();
             txtApply.DataSource = applies;
             txtApply.DisplayMember = "FullName";
+            txtApply.Text = item.Apply.Candidate.FirstName + " " + item.Apply.Candidate.LastName;
             txtApply.ValueMember = "CandidateID";
+            
         }
     }
     

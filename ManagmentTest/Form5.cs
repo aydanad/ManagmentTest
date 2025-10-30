@@ -50,6 +50,7 @@ namespace ManagmentTest
             interview.ApplicationID = ss.ApplicationID;
             interview.InterviewDate = txtInterviewDate.Value;
             interview.InterviewName = txtInterviewName.Text;
+            ss.Status= "برای مصاحبه";
             db.Interviews.Add(interview);
             db.SaveChanges();
             this.Close();

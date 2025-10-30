@@ -31,13 +31,35 @@ namespace ManagmentTest
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var item = dataGridView1.SelectedRows[0];
-                int userId = Convert.ToInt32(item.Cells["CanddidateID"].Value);
+                int userId = Convert.ToInt32(item.Cells["CandidateID"].Value);
+
                 var i = db.Candidates.Find(userId);
-                var c = db.Applies.Where(h => h.CandidateID == userId).FirstOrDefault();
-                db.Applies.Remove(c);
-                db.Candidates.Remove(i);
+                var c = db.Applies.FirstOrDefault(h => h.CandidateID == userId);
+                Interview m = null;
+
+                if (c != null)
+                {
+                    m = db.Interviews.FirstOrDefault(l => l.ApplicationID == c.ApplicationID);
+                }
+
+                if (m != null)
+                {
+                    db.Interviews.Remove(m);
+                }
+
+                if (c != null)
+                {
+                    db.Applies.Remove(c);
+                }
+
+                if (i != null)
+                {
+                    db.Candidates.Remove(i);
+                }
+
                 db.SaveChanges();
                 RefreshGrid();
+
             }
         }
 
@@ -168,6 +190,7 @@ namespace ManagmentTest
                 var item = dataGridView3.SelectedRows[0];
                 int userId = Convert.ToInt32(item.Cells["InterviewID"].Value);
                 var i = db.Interviews.Find(userId);
+                i.Apply.Status = "در انتظار";
                 db.Interviews.Remove(i);
                 db.SaveChanges();
                 RefreshGrid();
