@@ -27,16 +27,16 @@ namespace ManagmentTest
 
         private void OK_Click(object sender, EventArgs e)
         {
-            var interview = db.Interviews.Where(v => v.InterviewID == _interviewId).FirstOrDefault();
-            var ss = db.Applies.Where(v => v.CandidateID == (int)txtApply.SelectedValue).FirstOrDefault();
-            interview.Status = "برای مصاحبه";
-            interview.ApplicationID = ss.ApplicationID;
-            interview.InterviewDate = txtInterviewDate.Value;
-            interview.InterviewName = txtInterviewName.Text;
-            ss.Status = "برای مصاحبه";
+            //var interview = db.Interviews.Where(v => v.InterviewID == _interviewId).FirstOrDefault();
+            //var ss = db.Applies.Where(v => v.CandidateID == (int)txtApply.SelectedValue).FirstOrDefault();
+            //interview.Status = "برای مصاحبه";
+            //interview.ApplicationID = ss.ApplicationID;
+            //interview.InterviewDate = txtInterviewDate.Value;
+            //interview.InterviewName = txtInterviewName.Text;
+            //ss.Status = "برای مصاحبه";
 
-            db.SaveChanges();
-            this.Close();
+            //db.SaveChanges();
+            //this.Close();
         }
 
         private void Form6_Load(object sender, EventArgs e)
@@ -59,7 +59,6 @@ namespace ManagmentTest
             txtApply.DisplayMember = "FullName";
             txtApply.Text = item.Apply.Candidate.FirstName + " " + item.Apply.Candidate.LastName;
             txtApply.ValueMember = "CandidateID";
-            
         }
     }
     
